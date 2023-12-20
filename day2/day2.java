@@ -9,6 +9,7 @@ public class day2 {
     public static void main(String[] args) {
         BufferedReader reader;
         ArrayList<Integer> possibleGames = new ArrayList<>();
+        ArrayList<Integer> powerList = new ArrayList<>();
         int maxBlue = 14, maxRed = 12, maxGreen = 13;
 
         try {
@@ -39,7 +40,9 @@ public class day2 {
                 }
                 // now, blue, red and green hold the least amount of cubes that we know for sure are contained
 
-                System.out.printf("Game: %d, Blue: %d, Red: %d, Green: %d\n", gameNumber, blue, red, green);
+                int power = blue * red * green;
+                powerList.add(power);
+                System.out.printf("Game: %d, Blue: %d, Red: %d, Green: %d, Power: %d\n", gameNumber, blue, red, green, power);
 
                 if (blue <= maxBlue && red <= maxRed && green <= maxGreen) {
                     possibleGames.add(gameNumber);
@@ -54,7 +57,14 @@ public class day2 {
                 possibleGameSum += i;
             }
 
-            System.out.printf("\nPossible Game Sum: %d, Game List: %s\n", possibleGameSum, possibleGames);
+            System.out.printf("\n[Part 1] Possible Game Sum: %d, Game List: %s\n", possibleGameSum, possibleGames);
+
+            int powerSum = 0;
+            for (int i : powerList) {
+                powerSum += i;
+            }
+
+            System.out.printf("\n[Part 2] Power of all games: %d", powerSum);
 
             reader.close();
         } catch (IOException e) {

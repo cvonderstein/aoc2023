@@ -30,3 +30,17 @@ The idea is pretty straight-forward, for every line we get the maximum number of
 Then, if the game is possible (matches limit), we add the games to a list, which we later sum up.
 
 Just like on day 1, not all of this is necessary (here: the list, we could just sum it up directly), but having a list of games is nice for debugging and doesn't add much extra work.
+
+## Part 2
+
+### Task
+
+Now they defined the power as the product of the minimum number of cubes required to play a game.
+So for the same test input, Game 1 requires at least 6 blue, 2 green and 4 red cubes, therefore the power is 6*2*4 = 48.
+The result for the puzzle is the sum of the powers of all games.
+
+### Idea
+
+Since I basically already had all information I need, I only calculated the power (by multiplying the three amounts I already calculated), and stored in another ArrayList.
+Again, this is not necessary for the solution, since I could initialize a sum with 0 in the beginning and just add the power when processing the game, but I think it's nice to have that information and there is also this kind of idea, that I might reuse some of those algorithms in the future, so having this information is probably not bad.
+Afterwards, I just iterate over the List and sum all entries up and output the result.
